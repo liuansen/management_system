@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 """
 Django settings for management project.
 
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'attendance',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +79,15 @@ WSGI_APPLICATION = 'management.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'thunder',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'STORAGE_ENGINE': 'INNODB',
+        'OPTIONS': {'charset': 'utf8mb4',
+                    'init_command': "SET sql_mode = 'STRICT_TRANS_TABLES', innodb_strict_mode = 1"},
     }
 }
 
@@ -118,3 +129,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# 自定义User models字段
+AUTH_USER_MODEL = 'accounts.User'
+DEFAULT_CHARSET = 'utf-8'
+
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
