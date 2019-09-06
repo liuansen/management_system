@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'attendance.apps.AttendanceConfig',
+    'common',
+    'django_crontab',
+    'crontab',
 ]
 
 MIDDLEWARE = [
@@ -150,6 +153,14 @@ SUIT_CONFIG = {
     {'app': 'auth', 'label': '认证管理'},
   ),
 }
+
+# 钉钉管理员账号
+DD_USER = '15259227110'
+
+# 定时任务
+CRONJOBS = [
+    ('30 * * * *', 'crontab.get_dingtalk_api.get_access_token')
+]
 
 try:
     from local_settings import *

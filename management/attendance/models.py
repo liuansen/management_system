@@ -21,9 +21,6 @@ class DDAccessToken(models.Model):
     appsecret = models.CharField('appsecret', max_length=200, null=True, blank=True)
     access_token = models.CharField('access_token', null=True, blank=True, max_length=200)
 
-    def __str__(self):
-        return self.access_token
-
     class Meta:
         verbose_name = 'token表'
         verbose_name_plural = verbose_name
