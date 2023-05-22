@@ -3,4 +3,4 @@ PyMySQL==0.9.3
 mysqlclient==1.4.4
 django-suit==0.2.26
 django-crontab==0.7.1
-requests==2.20.0
+requests==2.31.0
